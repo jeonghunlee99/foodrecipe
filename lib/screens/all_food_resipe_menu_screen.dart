@@ -3,10 +3,11 @@ import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:foodrecipe/provider/bookmark_provider.dart';
+import 'package:foodrecipe/screens/food_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/custom_bottom_navigation_action_widget.dart';
-import 'fooddetail_screen.dart';
+
 
 class AllFoodPage extends StatefulWidget {
   final String title;
@@ -88,18 +89,31 @@ class _FoodPageState extends State<AllFoodPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              bool isAdding = favorites.contains(food['name']);
-                              favoritesProvider.toggleFavorite(food['name']);
-                              CherryToast.info(
-                                title: Text(isAdding ? '${food['name']} 즐겨찾기가 삭제됐습니다.' : '${food['name']} 즐겨찾기가 추가됐습니다.'),
-                                animationType: AnimationType.fromTop,
-                              ).show(context);
+                              String foodName = food['name'];
+                              bool isAdding = !favorites
+                                  .contains(foodName); // isAdding을 뒤집음
+                              favoritesProvider.toggleFavorite(foodName);
+
+                              // 즐겨찾기가 추가되거나 삭제될 때마다 적절한 Toast를 표시합니다.
+                              if (isAdding) {
+                                CherryToast.add(
+                                  title: Text('$foodName 즐겨찾기가 추가됐습니다.'),
+                                  animationType: AnimationType.fromTop,
+                                ).show(context);
+                              } else {
+                                CherryToast.delete(
+                                  title: Text('$foodName 즐겨찾기가 삭제됐습니다.'),
+                                  animationType: AnimationType.fromTop,
+                                ).show(context);
+                              }
                             },
                             child: Icon(
-                              isFavorite ? Icons.star : Icons.star_border_outlined,
-                              color: isFavorite ? Colors.yellow : Colors.yellow,
+                              isFavorite
+                                  ? Icons.star
+                                  : Icons.star_border_outlined,
+                              color: Colors.yellow,
                             ),
-                          ),
+                          )
                         ],
                       ),
                       const SizedBox(height: 4.0),

@@ -94,20 +94,16 @@ class HomePageState extends State<HomePage> {
                 CategoryButton(
                   imageUrl: 'https://via.placeholder.com/150',
                   buttonText: '한식',
-                  jsonFileNames: ['koreafood_data'], // 수정된 부분: JSON 파일 이름들의 리스트를 전달
+                  jsonFileNames: ['koreafood_data'],
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FoodPage(
-                          title: '한식',
-                          jsonFileNames: ['koreafood_data'], // 수정된 부분: JSON 파일 이름들의 리스트를 전달
-                        ),
-                      ),
+                          builder: (context) => const FoodPage(
+                              title: '한식',  jsonFileNames: ['koreafood_data'],)),
                     );
                   },
                 ),
-
                 CategoryButton(
                   imageUrl: 'https://via.placeholder.com/150',
                   buttonText: '중식',
@@ -117,10 +113,7 @@ class HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const FoodPage(
-                              title: '중식',
-                              jsonFileNames: ['chinesefood_data']
-                          )
-                      ),
+                              title: '중식',  jsonFileNames: ['westernfood_data'],)),
                     );
                   },
                 ),

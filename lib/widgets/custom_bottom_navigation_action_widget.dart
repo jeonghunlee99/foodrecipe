@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodrecipe/screens/all_food_resipe_menu_screen.dart';
 import 'package:foodrecipe/screens/setting_screen.dart';
 import 'package:foodrecipe/widgets/custom_pageroute_widget.dart';
-import '../screens/allfoodresipemenu_screen.dart';
 import '../screens/home_screen.dart';
 import 'package:foodrecipe/cons/colortable.dart';
 import 'package:foodrecipe/screens/bookmark_screen.dart';
@@ -39,12 +39,10 @@ class BottomNavigator extends StatelessWidget {
           ),
               (route) => false,
         );
-        break;
-
       case 2:
         Navigator.pushAndRemoveUntil(
             context,
-            CustomPageRoute(builder: (context) => const BookMarkPage()),
+            CustomPageRoute(builder: (context) => BookMarkPage()),
               (route) => false
         );
         break;
