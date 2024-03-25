@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
+
 class CategoryButton extends StatelessWidget {
   final String imageUrl;
   final String buttonText;
+  final List<String> jsonFileNames; // 수정된 부분: JSON 파일 이름들의 리스트
   final VoidCallback onPressed;
 
-  const CategoryButton({super.key,
+  const CategoryButton({
+    Key? key,
     required this.imageUrl,
     required this.buttonText,
+    required this.jsonFileNames,
     required this.onPressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,3 +42,4 @@ class CategoryButton extends StatelessWidget {
     );
   }
 }
+

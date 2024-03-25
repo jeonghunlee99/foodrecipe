@@ -94,37 +94,47 @@ class HomePageState extends State<HomePage> {
                 CategoryButton(
                   imageUrl: 'https://via.placeholder.com/150',
                   buttonText: '한식',
+                  jsonFileNames: ['koreafood_data'], // 수정된 부분: JSON 파일 이름들의 리스트를 전달
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const FoodPage(
-                              title: '한식', jsonFileName: 'koreafood_data')),
+                        builder: (context) => FoodPage(
+                          title: '한식',
+                          jsonFileNames: ['koreafood_data'], // 수정된 부분: JSON 파일 이름들의 리스트를 전달
+                        ),
+                      ),
                     );
                   },
                 ),
+
                 CategoryButton(
                   imageUrl: 'https://via.placeholder.com/150',
                   buttonText: '중식',
+                  jsonFileNames: ['chinesefood_data'],
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const FoodPage(
-                              title: '중식', jsonFileName: 'chinesefood_data')),
+                              title: '중식',
+                              jsonFileNames: ['chinesefood_data']
+                          )
+                      ),
                     );
                   },
                 ),
                 CategoryButton(
                   imageUrl: 'https://via.placeholder.com/150',
                   buttonText: '양식',
+                  jsonFileNames: ['westernfood_data'],
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const FoodPage(
                                 title: '양식',
-                                jsonFileName: 'westernfood_data',
+                                jsonFileNames: ['westernfood_data'],
                               )),
                     );
                   },

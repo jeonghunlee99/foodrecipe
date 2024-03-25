@@ -5,17 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:foodrecipe/provider/bookmark_provider.dart';
 import 'package:provider/provider.dart';
 
-class FoodPage extends StatefulWidget {
+import '../widgets/custom_bottom_navigation_action_widget.dart';
+
+class AllFoodPage extends StatefulWidget {
   final String title;
   final List<String> jsonFileNames; // 수정된 부분: JSON 파일 이름들의 리스트
 
-  const FoodPage({Key? key, required this.title, required this.jsonFileNames}) : super(key: key);
+  const AllFoodPage({Key? key, required this.title, required this.jsonFileNames}) : super(key: key);
 
   @override
-  State<FoodPage> createState() => _FoodPageState();
+  State<AllFoodPage> createState() => _FoodPageState();
 }
 
-class _FoodPageState extends State<FoodPage> {
+class _FoodPageState extends State<AllFoodPage> {
+  int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +111,14 @@ class _FoodPageState extends State<FoodPage> {
               },
             );
           }
+        },
+      ),
+      bottomNavigationBar: BottomNavigator(
+        selectedIndex: _selectedIndex,
+        onItemTapped: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
         },
       ),
     );
