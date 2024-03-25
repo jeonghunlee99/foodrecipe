@@ -75,7 +75,7 @@ class BookMarkPagePageState extends State<BookMarkPage> {
                       icon: const Icon(Icons.star, color: Colors.yellow),
                       onPressed: () {
                         favoritesProvider.toggleFavorite(foodData['name']);
-                        CherryToast.info(
+                        CherryToast.delete(
                           animationType: AnimationType.fromTop,
                           title: Text('${foodData['name']} 즐겨찾기가 취소되었습니다.'),
                         ).show(context);

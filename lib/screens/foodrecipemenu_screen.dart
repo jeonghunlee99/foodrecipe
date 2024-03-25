@@ -4,7 +4,7 @@ import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:foodrecipe/provider/bookmark_provider.dart';
 import 'package:provider/provider.dart';
-import 'fooddetail_screen.dart';
+import 'food_detail_screen.dart';
 
 class FoodPage extends StatefulWidget {
   final String title;
@@ -87,7 +87,7 @@ class _FoodPageState extends State<FoodPage> {
                             onTap: () {
                               bool isAdding = favorites.contains(food['name']);
                               favoritesProvider.toggleFavorite(food['name']);
-                              CherryToast.info(
+                              CherryToast.delete(
                                 title: Text(isAdding ? '${food['name']} 즐겨찾기가 삭제됐습니다.' : '${food['name']} 즐겨찾기가 추가됐습니다.'),
                                 animationType: AnimationType.fromTop,
                               ).show(context);
