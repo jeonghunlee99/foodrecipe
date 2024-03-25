@@ -6,6 +6,7 @@ import 'package:foodrecipe/provider/bookmark_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/custom_bottom_navigation_action_widget.dart';
+import 'fooddetail_screen.dart';
 
 class AllFoodPage extends StatefulWidget {
   final String title;
@@ -58,8 +59,12 @@ class _FoodPageState extends State<AllFoodPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          debugPrint('Food tapped: ${food['name']}');
-                          // 음식 상세 페이지로 이동하는 코드를 추가할 수 있습니다.
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FoodDetailPage(foodData: food),
+                            ),
+                          );
                         },
                         child: Image.network(
                           food['image'],

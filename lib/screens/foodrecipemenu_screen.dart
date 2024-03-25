@@ -4,6 +4,7 @@ import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:foodrecipe/provider/bookmark_provider.dart';
 import 'package:provider/provider.dart';
+import 'fooddetail_screen.dart';
 
 class FoodPage extends StatefulWidget {
   final String title;
@@ -55,8 +56,12 @@ class _FoodPageState extends State<FoodPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          debugPrint('Food tapped: ${food['name']}');
-                          // 음식 상세 페이지로 이동하는 코드를 추가할 수 있습니다.
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FoodDetailPage(foodData: food),
+                            ),
+                          );
                         },
                         child: Image.network(
                           food['image'],
