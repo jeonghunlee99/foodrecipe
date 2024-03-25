@@ -87,7 +87,7 @@ class _FoodPageState extends State<FoodPage> {
                             onTap: () {
                               bool isAdding = favorites.contains(food['name']);
                               favoritesProvider.toggleFavorite(food['name']);
-                              CherryToast.info(
+                              CherryToast.delete(
                                 title: Text(isAdding ? '${food['name']} 즐겨찾기가 삭제됐습니다.' : '${food['name']} 즐겨찾기가 추가됐습니다.'),
                                 animationType: AnimationType.fromTop,
                               ).show(context);
